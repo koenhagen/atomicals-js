@@ -2,18 +2,13 @@ name: Test
 
 on:
   push:
-    branches:
-      - '**'
-  pull_request:
-    branches: 
-      - 'master'
 
 jobs:
   build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [18.x, 20.x]
+        node-version: [20.x]
     steps:
     - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
@@ -36,5 +31,5 @@ jobs:
       with:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: yarn test
-        count: 1
+        count: 100
       
